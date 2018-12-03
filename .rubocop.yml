@@ -1,0 +1,117 @@
+require:
+  - ./lib/rubocop/root_cops/private_methods/called_private_method.rb
+  - ./lib/rubocop/root_cops/private_methods/called_protected.rb
+  - ./lib/rubocop/root_cops/private_methods/underscore_prefix.rb
+  - ./lib/rubocop/root_cops/prefer_keyword_args.rb
+  - ./lib/rubocop/root_cops/spec_file_name.rb
+  - ./lib/rubocop/root_cops/use_before_action.rb
+  - ./lib/rubocop/root_cops/use_detect.rb
+  - ./lib/rubocop/root_cops/use_lonely_operator.rb
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - "bin/**/*"
+
+Lint/Debugger:
+  AutoCorrect: false
+
+Lint/IneffectiveAccessModifier:
+  Enabled: false
+
+Lint/UselessAccessModifier:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 7
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# Disable Style/FileName on /config/infrastructure as the DSL filenames contain the
+# Heroku app name which contains dashes.
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - config/infrastructure/*
+
+# prefixes should be avoided before predicates in general, but they make sense
+# in some cases, particularly if an arg is being passed to the method
+Naming/PredicateName:
+  Enabled: false
+
+Performance/Casecmp:
+  Enabled: false
+
+RootCops/PreferKeywordArgs:
+  Enabled: true
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+# class documentation isn't necessary
+Style/Documentation:
+  Enabled: false
+
+# use !! to return a boolean where appropriate
+Style/DoubleNegation:
+  Enabled: false
+
+# not going to force using guard clauses
+Style/GuardClause:
+  Enabled: false
+
+# continue to use string#freeze instead
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# use 1.8 style hashes
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+# not requiring guard clauses for single-line bodies
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 6
+
+# use raise to raise an exception
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+# use double quotes for string literals
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# okay to use double quotes inside interpolation
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+# disabling this so that %w() syntax isn't required in nested arrays which would have mixed syntax
+Style/WordArray:
+  Enabled: false
