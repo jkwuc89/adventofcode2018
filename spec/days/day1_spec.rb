@@ -1,6 +1,6 @@
-RSpec.describe Day1 do
-  TEST_RESOURCE_DIR = "#{Dir.pwd}/spec/resources".freeze
+require "constants_and_utils"
 
+RSpec.describe Day1 do
   context "https://adventofcode.com/2018/day/1" do
     context "Puzzle 1: Adjust frequency" do
       context "Examples" do
@@ -9,7 +9,7 @@ RSpec.describe Day1 do
         it { expect(described_class.puzzle1(:adjustments => %w[-1 -2 -3])).to eq(-6) }
       end
       context "Puzzle input" do
-        it { expect(described_class.puzzle1(:adjustments => IO.readlines("#{TEST_RESOURCE_DIR}/day1input.txt"))).to eq(525) }
+        it { expect(described_class.puzzle1(:adjustments => Utils.get_puzzle_input(:day_number => 1))).to eq(525) }
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe Day1 do
       end
 
       context "Puzzle input" do
-        it { expect(described_class.puzzle2(IO.readlines("#{TEST_RESOURCE_DIR}/day1input.txt"))).to eq(75749) }
+        it { expect(described_class.puzzle2(Utils.get_puzzle_input(:day_number => 1))).to eq(75749) }
       end
     end
   end
