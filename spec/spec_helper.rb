@@ -1,5 +1,7 @@
 require "bundler/setup"
-require "advent_of_code_2018"
+Dir["#{File.dirname(__FILE__)}/../lib/days/**/*.rb"].each do |f|
+  require(f)
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
