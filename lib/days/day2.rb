@@ -1,7 +1,7 @@
 require "adventofcode2018/version"
 
 module Day2
-  def self.puzzle1(box_ids:)
+  def self.part1(box_ids:)
     has_exactly_two_of_any_char_count = 0
     has_exactly_three_of_any_char_count = 0
 
@@ -19,7 +19,7 @@ module Day2
     checksum
   end
 
-  def self.puzzle2(box_ids:)
+  def self.part2(box_ids:)
     correct_box_ids = Array.new
     box_ids.each_with_index do |box_id1, index|
       box_ids[index..-1].each do |box_id2|

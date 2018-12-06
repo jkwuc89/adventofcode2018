@@ -3,7 +3,7 @@ require "ostruct"
 require "set"
 
 module Day1
-  def self.puzzle1(starting_frequency: 0, adjustments:)
+  def self.part1(starting_frequency: 0, adjustments:)
     frequency = starting_frequency
     adjustments.each do |adjustment|
       adj = _deconstruct_adjustment(adjustment)
@@ -12,7 +12,7 @@ module Day1
     frequency
   end
 
-  def self.puzzle2(adjustments)
+  def self.part2(adjustments)
     current_frequency = 0
     frequencies = Set[current_frequency]
     loop do
