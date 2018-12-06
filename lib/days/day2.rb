@@ -19,9 +19,37 @@ module Day2
     checksum
   end
 
-  def self.puzzle2()
+  def self.puzzle2(box_ids:)
+    correct_box_ids = Array.new
+    box_ids.each_with_index do |box_id1, index|
+      box_ids[index..-1].each do |box_id2|
+        if _are_box_ids_different_by_one_char(:box_id1 => box_id1, :box_id2 => box_id2)
+          correct_box_ids.push(box_id1)
+          correct_box_ids.push(box_id2)
+        end
+      end
+    end
+    raise "More than 2 correct box IDs found" unless correct_box_ids.length == 2
+
+    _get_common_chars(:correct_box_id1 => correct_box_ids[0], :correct_box_id2 => correct_box_ids[1])
   end
 
   private
 
+  def self._are_box_ids_different_by_one_char(box_id1:, box_id2:)
+    diff_count = 0
+    box_id1.each_char.with_index do |box_id1_char, index|
+      diff_count += 1 if box_id1_char != box_id2[index]
+      return false if diff_count > 1
+    end
+    diff_count == 1
+  end
+
+  def self._get_common_chars(correct_box_id1:, correct_box_id2:)
+    common_chars = ""
+    correct_box_id1.each_char.with_index do |correct_box_id1_char, index|
+      common_chars += correct_box_id1_char if correct_box_id1_char == correct_box_id2[index]
+    end
+    common_chars
+  end
 end
